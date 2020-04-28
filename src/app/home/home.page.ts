@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Estudiante } from '../models/estudiante';
+import { EstudianteService } from '../services/estudiante.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,19 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  public students: Estudiante[];
 
+  constructor(private service: EstudianteService) {
+    this.getStudents();
+  }
+  getStudents() {
+    this.service.getStudents().subscribe(data => {
+      this.students = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ... e.payload.doc.data as any
+        } as Estudiante 
+      })
+    })
+  }
 }
