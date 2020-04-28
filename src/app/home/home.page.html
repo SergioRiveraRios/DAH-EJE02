@@ -5,7 +5,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
     <ion-list>
       <ion-item-sliding *ngFor="let student of students">
         <ion-item-options side="start">
@@ -17,10 +16,10 @@
           <ion-label>
             <h2>
               <strong>{{student.name}}</strong>
-              <ion-chip color="secondary" *ngIf='student.active' class="ion-flat-right">
+              <ion-chip color="secondary" *ngIf='!student.active' class="ion-flat-right">
                 <ion-label>Activo</ion-label>
               </ion-chip>
-              <ion-chip color="secondary" *ngIf='!student.active' class="ion-flat-right">
+              <ion-chip color="secondary" *ngIf='student.active' class="ion-flat-right">
                 <ion-label>Inactivo</ion-label>
               </ion-chip>
             </h2>
@@ -34,5 +33,4 @@
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
-  </ion-list>
 </ion-content>
