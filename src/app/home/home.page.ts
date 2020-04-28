@@ -19,7 +19,7 @@ export class HomePage {
       this.students = data.map(e => {
         return {
           id: e.payload.doc.id,
-          ...e.payload.doc.data as any
+          ...e.payload.doc.data()
         } as Estudiante;
       })
     })
